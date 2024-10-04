@@ -3,6 +3,13 @@
 #include <iterator> 
 #include <cstdlib>  
 
+template<typename T>
+void generic_print(const T& container, std::ostream& stream = std::cout) {
+    for (auto itr = container.begin(); itr != container.end(); itr++) {
+        stream << *itr << "\n";
+    }
+}
+
 int main(int argc, char* argv[]) {
 
     std::list<int> intList;
@@ -12,11 +19,7 @@ int main(int argc, char* argv[]) {
         intList.push_back(temp);
     }
 
-    std::list<int>::iterator it = intList.begin();
-    while (it != intList.end()) {
-        std::cout << *it << std::endl;
-        it++;
-    }
+    generic_print(intList);
 
     return 0;
 }
